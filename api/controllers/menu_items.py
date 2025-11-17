@@ -37,7 +37,7 @@ def read_all(db: Session):
 
 def read_one(db: Session, item_id: int):
     try:
-        item = db.query(model.MenuItem).filter(model.MenuItem.id == item_id).first()
+        item = db.query(model.MenuItem).filter(item_id == model.MenuItem.id).first()
         if not item:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
@@ -51,7 +51,7 @@ def read_one(db: Session, item_id: int):
 
 def update(db: Session, item_id: int, request):
     try:
-        item_q = db.query(model.MenuItem).filter(model.MenuItem.id == item_id)
+        item_q = db.query(model.MenuItem).filter(item_id == model.MenuItem.id)
         if not item_q.first():
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
@@ -70,7 +70,7 @@ def update(db: Session, item_id: int, request):
 
 def delete(db: Session, item_id: int):
     try:
-        item_q = db.query(model.MenuItem).filter(model.MenuItem.id == item_id)
+        item_q = db.query(model.MenuItem).filter(item_id == model.MenuItem.id)
         if not item_q.first():
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
