@@ -13,6 +13,13 @@ class CustomerCreate(CustomerBase):
     pass
 
 
+class CustomerUpdate(BaseModel):
+    name: Optional[str] = None
+    email: Optional[EmailStr] = None
+    phone: Optional[str] = None
+    address: Optional[str] = None
+
+
 class Customer(CustomerBase):
     id: int
 
